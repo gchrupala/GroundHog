@@ -44,9 +44,9 @@ class RandomSamplePrinter(object):
                 y_words = cut_eol(map(lambda w_idx : self.model.word_indxs[w_idx], y))
                 if len(x_words) == 0:
                     continue
-
-                print "Input: {}".format(" ".join(x_words))
-                print "Target: {}".format(" ".join(y_words))
+                
+                print "Input: {}".format(x_words)
+                print "Target: {}".format(y_words)
                 self.model.get_samples(self.state['seqlen'] + 1, self.state['n_samples'], x[:len(x_words)])
                 sample_idx += 1
 
