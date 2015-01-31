@@ -246,14 +246,14 @@ class MainLoop(object):
             timings_path = self.state['prefix'] + 'timing.npz'
         try:
             self.model.load(model_path)
-        except Exception:
-            print 'mainLoop: Corrupted model file'
-            traceback.print_exc()
+        except Exception as e:
+            print 'mainLoop: {0}'.format(e)
+            #traceback.print_exc()
         try:
             self.timings = dict(numpy.load(timings_path).iteritems())
-        except Exception:
-            print 'mainLoop: Corrupted timings file'
-            traceback.print_exc()
+        except Exception as e:
+            print 'mainLoop: {0}'.format(e)
+            #traceback.print_exc()
 
     def main(self):
         assert self.reset == -1
