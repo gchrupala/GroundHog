@@ -51,7 +51,7 @@ train-%.ori.shuf.h5 train-%.tgt.shuf.h5: train-%.ori.h5 train-%.tgt.h5
 search_norm_model.npz: train-0.ori.shuf.h5 train-0.tgt.shuf.h5 \
                        train-0.ori.vocab.pkl train-0.tgt.vocab.pkl \
                  train-0.ori.ivocab.pkl train-0.tgt.ivocab.pkl 
-	train.py --proto=prototype_search_state --state $(HOG)/normalization.py 
+	OMP_NUM_THREADS=1 train.py --proto=prototype_search_state --state $(HOG)/normalization.py 
 
 %.oritgt: %.ori %.tgt
 	paste $*.ori $*.tgt  > $@
