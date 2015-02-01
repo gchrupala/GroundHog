@@ -10,10 +10,10 @@ __authors__ = ("Razvan Pascanu "
                "Caglar Gulcehre ")
 __contact__ = "Razvan Pascanu <r.pascanu@gmail>"
 
-
+import codecs
 class Unbuffered:
     def __init__(self, stream):
-        self.stream = stream
+        self.stream = codecs.getwriter('utf-8')(stream)
 
     def write(self, data):
         self.stream.write(data)
